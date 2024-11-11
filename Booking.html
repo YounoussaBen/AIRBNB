@@ -16,7 +16,7 @@
 </head>
 <body>
     <header>
-        <!-- <h1>Gallery</h1> -->
+        <h1></h1>
         <!-- My Navbar -->
     <nav class="navbar navbar-fixed-top">
         <div class="container-fluid">
@@ -40,12 +40,88 @@
         </nav> -->
     </header>
     
-    <div id="band" class="container text-center">
-      <h3>My Airbnb</h3>
-      <p><em>Unlock New Destintions!</em></p>
-      <p>Embark on a journey with My Airbnb. Discover the hidden treasures of the world, from bustling cities to serene landscapes. Feel the thrill of adventure as you wander through ancient streets, taste exotic cuisines, and immerse yourself in diverse cultures. Let My Airbnb be your guide, turning your dreams of exploration into unforgettable memories. Join us as we redefine the way you experience the world</p>
+
+<!-- Container (The Band Section) -->
+<div id="band" class="container text-center">
+  <h3>My Airbnb</h3>
+  <p><em>Unlock New Destintions!</em></p>
+  <p>Embark on a journey with My Airbnb. Discover the hidden treasures of the world, from bustling cities to serene landscapes. Feel the thrill of adventure as you wander through ancient streets, taste exotic cuisines, and immerse yourself in diverse cultures. Let My Airbnb be your guide, turning your dreams of exploration into unforgettable memories. Join us as we redefine the way you experience the world</p>
+ </div>
+
+
+    <div class="row text-center justify-content">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="Cotonou.webp" alt="Aparts" width="400" height="300">
+          <p><strong>Apartments</strong></p>
+          
+          <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+        </div>
+      </div> 
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="Lome.webp" alt="bnb" width="400" height="300">
+          <p><strong>Airbnb</strong></p>
+          <!-- <p>Saturday 28 November 2015</p> -->
+          <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="pool.webp" alt="Villa" width="400" height="300">
+          <p><strong>Villa</strong></p>
+          <!-- <p>Sunday 29 November 2015</p> -->
+          <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="Benin.jpg" alt="Villa" width="400" height="300">
+          <p><strong></strong></p>
+          <!-- <p>Sunday 29 November 2015</p> -->
+          <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+        </div>
+      </div>
     </div>
-    <main style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> BOOKING</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-home"></span> Enter Apartments/Villa/Airbnb</label>
+              <input type="number" class="form-control" id="psw" placeholder="How many?">
+            </div>
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+              <button type="submit" class="btn btn-block">Send 
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </button>
+          <p>Need <a href="#">help?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- <main style="display: flex; justify-content: space-around; flex-wrap: wrap;">
         <div style="margin: 10px; text-align: center;">
             <img src="Benin.jpg" alt="Motivational Image 1" style="width: 300px;">
             <p>"Empower yourself every day"</p>
@@ -62,7 +138,7 @@
             <img src="Lome.webp" alt="Motivational Image 4" style="width: 300px;">
             <p>"Dream big, work hard"</p>
         </div>
-    </main>
+    </main> -->
 
     <footer class="text-center">
         <a class="up-arrow" href="services.html" data-toggle="tooltip" title="TO TOP">
