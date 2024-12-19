@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profession = mysqli_real_escape_string($conn, $_POST['profession']);
     $age = intval($_POST['age']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // Check if email already exists
     $checkEmail = "SELECT * FROM users WHERE email = '$email'";
@@ -43,20 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert user data into database
-    $sql = "INSERT INTO users (first_name, last_name, email, phone, nationality, 
-            profession, age, username, password, created_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+    $sql = "INSERT INTO users (first_name, last_name, email, phone, nationality, profession, age, username, password) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssssisss", 
+    mysqli_stmt_bind_param($stmt, "sssssssss", 
         $firstName, $lastName, $email, $phone, $nationality, 
         $profession, $age, $username, $password);
 
     if (mysqli_stmt_execute($stmt)) {
-        // Registration successful
-        session_start();
-        $_SESSION['registration_success'] = true;
-        header("Location: login.php");
+        // Registration successful - redirect to home page with success message
+        header("Location: ../home/home.html?registration=success&name=" . urlencode($firstName));
         exit();
     } else {
         $error_message = "Error: " . mysqli_error($conn);
