@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - My Airbnb</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #484848;
+            line-height: 1.6;
+            background-color: #fafafa;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 24px;
+            color: #FF385C !important;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('back1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .profile-section {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: -150px auto 60px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: slideUp 1s ease-out;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: -130px auto 30px;
+            border: 6px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            object-fit: cover;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .profile-section h3 {
+            color: #FF385C;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .profile-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #484848;
+            margin-bottom: 30px;
+        }
+
+        .btn-contact {
+            background-color: #FF385C;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-contact:hover {
+            background-color: #E31C5F;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-contact .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+        }
+
+        footer {
+            background-color: #2d2d30;
+            padding: 60px 0;
+            color: white;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            color: white;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            color: #FF385C;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FF385C;
+            transform: translateX(-100%);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                margin: -100px 20px 40px;
+                padding: 30px;
+            }
+
+            .profile-image {
+                width: 140px;
+                height: 140px;
+                margin: -100px auto 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-transition"></div>
+    
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../home/home.html">My Airbnb</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to My Airbnb</h1>
+            <p>Creating Exceptional Stays Across West Africa</p>
+        </div>
+    </section>
+
+    <section class="profile-section">
+        <img src="../assets/images/medou.jpg" alt="Dora" class="profile-image">
+        <h3>Hi there! I'm Dora</h3>
+        <p><em>Founder & CEO of My Airbnb</em></p>
+        <p>"Driven by a deep passion for real estate, I created MyAirbnb to offer unique and thoughtfully curated spaces where guests can experience the comfort and charm of a true home away from home. My goal is to connect people with beautiful, functional properties that reflect the essence of quality and hospitality in every stay."</p>
+        <button class="btn-contact" onclick="contactTransition()">Contact Me</button>
+    </section>
+
+    <footer class="text-center">
+        <p>© 2024 My Airbnb. All rights reserved.</p>
+        <p><a href="#">www.myairbnb.com</a></p>
+        <div class="social-icons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+
+    <script>
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const ripple = document.createElement('span');
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            ripple.style.width = ripple.style.height = `${diameter}px`;
+            ripple.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+            ripple.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            ripple.classList.add('ripple');
+
+            const existingRipple = button.getElementsByClassName('ripple')[0];
+            if (existingRipple) {
+                existingRipple.remove();
+            }
+
+            button.appendChild(ripple);
+        }
+
+        function contactTransition() {
+            const transition = document.querySelector('.page-transition');
+            transition.style.transition = 'transform 0.5s ease-in-out';
+            transition.style.transform = 'translateX(0)';
+
+            // Create ripple effect
+            const button = document.querySelector('.btn-contact');
+            createRipple(event);
+
+            // Wait for animations to complete
+            setTimeout(() => {
+                window.location.href = 'contact.html';
+            }, 500);
+        }
+
+        // Add parallax scrolling to hero section
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+            $('.hero-section').css({
+                'background-position': 'center ' + (scroll * 0.5) + 'px'
+            });
+        });
+
+        // Add ripple effect to button
+        const button = document.querySelector('.btn-contact');
+        button.addEventListener('click', createRipple);
+    </script>
+</body>
+</html>

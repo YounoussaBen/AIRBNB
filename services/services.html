@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - My Airbnb</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #484848;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 24px;
+            color: #FF385C !important;
+        }
+
+        #band {
+            background-color: #ffffff;
+            border-radius: 15px;
+            margin: 100px auto 40px;
+            padding: 60px 30px;
+            max-width: 1200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #band h3 {
+            color: #FF385C;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        #band p {
+            color: #484848;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .video-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        video {
+            border-radius: 10px;
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .video-description {
+            color: #484848;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        footer {
+            background-color: #484848;
+            padding: 40px 0;
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FF385C;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+
+        .up-arrow {
+            display: inline-block;
+            background-color: #FF385C;
+            padding: 10px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .up-arrow:hover {
+            transform: translateY(-3px);
+            background-color: #E31C5F;
+        }
+
+        @media (max-width: 768px) {
+            #band {
+                margin-top: 80px;
+                padding: 40px 20px;
+            }
+
+            .video-container {
+                padding: 15px;
+            }
+
+            video {
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../home/home.html">My Airbnb</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="band" class="container text-center">
+        <h3>My Airbnb</h3>
+        <p><em>Unlock New Destinations!</em></p>
+        <p>Embark on a journey with My Airbnb. Discover the hidden treasures of the world, from bustling cities to serene landscapes. Feel the thrill of adventure as you wander through ancient streets, taste exotic cuisines, and immerse yourself in diverse cultures. Let My Airbnb be your guide, turning your dreams of exploration into unforgettable memories.</p>
+    </div>
+
+    <main>
+        <div class="video-container">
+            <video controls>
+                <source src="../assets/videos/vid1.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+            <p class="video-description">"Experience the perfect blend of luxury and comfort in our thoughtfully designed apartments, where every detail invites you to unwind, relax, and feel at home. From elegant interiors to breathtaking views, enjoy a lifestyle crafted for both indulgence and ease."</p>
+        </div>
+
+        <div class="video-container">
+            <video controls>
+                <source src="../assets/videos/vid2.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+            <p class="video-description">"Step into a world where style meets serenity. Our luxurious, meticulously crafted apartments offer a sanctuary of modern elegance, ideal for creating unforgettable moments and enjoying the finer things in life."</p>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        <a class="up-arrow" href="#" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+        <p>© 2024 My Airbnb. All rights reserved.</p>
+        <p><a href="#">www.myairbnb.com</a></p>
+        <div class="social-icons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>

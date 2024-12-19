@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - My Airbnb</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FF385C 0%, #E31C5F 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .brand-header h1 {
+            color: #FF385C;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .brand-header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #eee;
+            margin: 30px 0;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .progress {
+            position: absolute;
+            height: 100%;
+            background: #FF385C;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .field {
+            position: relative;
+        }
+
+        .field label {
+            display: block;
+            font-size: 14px;
+            color: #484848;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .field input, .field select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .field input:focus, .field select:focus {
+            border-color: #FF385C;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.1);
+        }
+
+        .field .tooltip {
+            position: absolute;
+            right: -20px;
+            top: 40px;
+            font-size: 16px;
+            color: #666;
+            cursor: help;
+        }
+
+        .field .tooltip:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            right: 30px;
+            top: -5px;
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        .field .example {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .btn-register {
+            background: #FF385C;
+            color: white;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-register:hover {
+            background: #E31C5F;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(227, 28, 95, 0.3);
+        }
+
+        .validation-message {
+            display: none;
+            color: #e31c5f;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .field input:invalid + .validation-message {
+            display: block;
+        }
+
+        .password-strength {
+            height: 4px;
+            background: #eee;
+            margin-top: 8px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .password-strength span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: #FF385C;
+            transition: width 0.3s ease;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #FF385C;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .login-link a:hover {
+            color: #E31C5F;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .brand-header h1 {
+                font-size: 24px;
+            }
+
+            .field .tooltip:hover::after {
+                right: auto;
+                left: 0;
+                white-space: normal;
+                max-width: 200px;
+            }
+        }
+
+        .error-message {
+            background: #fff5f5;
+            color: #e31c5f;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #ffe5e5;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .field.error input {
+            border-color: #e31c5f;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        .floating-help {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #FF385C;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(227, 28, 95, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .floating-help:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(227, 28, 95, 0.4);
+        }
+
+        
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 24px;
+            color: #FF385C !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../home/home.html">My Airbnb</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="brand-header">
+            <h1>Create Your Account</h1>
+            <p>Join our community of travelers and hosts</p>
+        </div>
+
+        <form action="register.php" method="POST" id="registerForm">
+            <div class="form-grid">
+                <div class="field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" 
+                           required pattern="[A-Za-z]{2,}" 
+                           placeholder="e.g., Dora"
+                           title="Please enter at least 2 letters">
+                    <span class="example">Letters only, minimum 2 characters</span>
+                </div>
+
+                <div class="field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" 
+                           required pattern="[A-Za-z]{2,}"
+                           placeholder="e.g., Pito"
+                           title="Please enter at least 2 letters">
+                    <span class="example">Letters only, minimum 2 characters</span>
+                </div>
+
+                
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" 
+                           required pattern="[A-Za-z0-9_]{4,}"
+                           placeholder="e.g., dora_pito"
+                           title="Letters, numbers and underscore only">
+                    <span class="example">Minimum 4 characters, no spaces</span>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" 
+                           required placeholder="e.g., dora.pito@example.com">
+                    <i class="fa fa-info-circle tooltip" data-tip="We'll send a confirmation email"></i>
+                </div>
+
+                <div class="field">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" 
+                           required pattern="[0-9]{10,}"
+                           placeholder="e.g., 0593104435"
+                           title="Please enter at least 10 digits">
+                    <span class="example">Numbers only, minimum 10 digits</span>
+                </div>
+
+                <div class="field">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" name="nationality" 
+                           required placeholder="e.g., Togolese"
+                           pattern="[A-Za-z\s]{2,}">
+                </div>
+
+                <div class="field">
+                    <label for="profession">Profession</label>
+                    <input type="text" id="profession" name="profession" 
+                           required placeholder="e.g., Software Engineer">
+                </div>
+
+                <div class="field">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" 
+                           min="18" max="120" required
+                           placeholder="e.g., 25">
+                    <span class="example">Must be 18 or older</span>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" 
+                           required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           placeholder="Create a strong password">
+                    <div class="password-strength">
+                        <span></span>
+                    </div>
+                    <span class="example">Must include uppercase, lowercase, number</span>
+                </div>
+
+                <div class="field">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" 
+                           required placeholder="Repeat your password">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-register">
+                Create Account <i class="fa fa-arrow-right"></i>
+            </button>
+        </form>
+
+    </div>
+
+    <div class="floating-help" onclick="showHelp()">
+        <i class="fa fa-question"></i>
+    </div>
+
+    <script>
+        // Form validation and progress tracking
+        const form = document.getElementById('registerForm');
+        const inputs = form.querySelectorAll('input');
+        const progressBar = document.querySelector('.progress');
+
+        function updateProgress() {
+            const totalFields = inputs.length;
+            let filledFields = 0;
+
+            inputs.forEach(input => {
+                if (input.value.trim() !== '') filledFields++;
+            });
+
+            const progress = (filledFields / totalFields) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', updateProgress);
+        });
+
+        // Password strength checker
+        const passwordInput = document.getElementById('password');
+        const strengthBar = document.querySelector('.password-strength span');
+
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+
+            if (password.match(/[a-z]/)) strength += 20;
+            if (password.match(/[A-Z]/)) strength += 20;
+            if (password.match(/[0-9]/)) strength += 20;
+            if (password.match(/[^a-zA-Z0-9]/)) strength += 20;
+            if (password.length >= 8) strength += 20;
+
+            strengthBar.style.width = `${strength}%`;
+            
+            if (strength <= 40) strengthBar.style.background = '#e31c5f';
+            else if (strength <= 80) strengthBar.style.background = '#ffa500';
+            else strengthBar.style.background = '#4CAF50';
+        });
+
+        // Password match validation
+        const confirmPassword = document.getElementById('confirmPassword');
+        confirmPassword.addEventListener('input', function() {
+            if (this.value !== passwordInput.value) {
+                this.setCustomValidity('Passwords do not match');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        function showHelp() {
+            alert('Need help? Contact our support team at support@myairbnb.com or call us at +1234567890');
+        }
+    </script>
+</body>
+</html>

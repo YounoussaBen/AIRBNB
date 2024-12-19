@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - My Airbnb</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #484848;
+            line-height: 1.6;
+            background-color: #fafafa;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 24px;
+            color: #FF385C !important;
+            padding: 15px;
+        }
+
+        #band {
+            background-color: white;
+            border-radius: 20px;
+            margin: 100px auto 60px;
+            padding: 60px 40px;
+            max-width: 1200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        #band h3 {
+            color: #FF385C;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        #band p {
+            color: #484848;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        #band p em {
+            color: #FF385C;
+            font-weight: 500;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .thumbnail {
+            padding: 0;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        .thumbnail:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover img {
+            transform: scale(1.05);
+        }
+
+        .thumbnail p {
+            padding: 20px 20px 10px;
+            margin: 0;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .btn {
+            background-color: #FF385C;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 24px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: white;
+            margin: 0 20px 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #E31C5F;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .modal-content {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background-color: #FF385C;
+            padding: 30px;
+            border: none;
+        }
+
+        .modal-header h4 {
+            color: white;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #FF385C;
+            box-shadow: none;
+        }
+
+        footer {
+            background-color: #2d2d30;
+            padding: 60px 0;
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FF385C;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            color: #FF385C;
+        }
+
+        .up-arrow {
+            display: inline-block;
+            background-color: #FF385C;
+            padding: 15px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .up-arrow:hover {
+            transform: translateY(-5px);
+            background-color: #E31C5F;
+        }
+
+        @media (max-width: 768px) {
+            #band {
+                margin-top: 80px;
+                padding: 40px 20px;
+            }
+
+            .gallery-container {
+                padding: 0 10px;
+            }
+
+            .thumbnail {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../home/home.html">My Airbnb</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+            </div>
+        </div>
+    </nav>
+
+    <div id="band" class="container text-center">
+        <h3>My Airbnb</h3>
+        <p><em>Unlock New Destinations!</em></p>
+        <p>Embark on a journey with My Airbnb. Discover the hidden treasures of the world, from bustling cities to serene landscapes. Feel the thrill of adventure as you wander through ancient streets, taste exotic cuisines, and immerse yourself in diverse cultures. Let My Airbnb be your guide, turning your dreams of exploration into unforgettable memories.</p>
+    </div>
+
+<div class="gallery-container">
+  <div class="row text-center justify-content">
+      <div class="col-sm-4">
+          <div class="thumbnail">
+              <img src="../assets/images/Cocody.webp" alt="Luxury Apartment">
+              <p><strong>Luxury Apartment</strong></p>
+              <p class="description">Modern 2-bedroom apartment s</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+          </div>
+      </div>
+      <div class="col-sm-4">
+          <div class="thumbnail">
+              <img src="../assets/images/pool.webp" alt="Beach Villa">
+              <p><strong>Beach Villa</strong></p>
+              <p class="description">Oceanfront 3-bedroom villa with pool</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+          </div>
+      </div>
+      <div class="col-sm-4">
+          <div class="thumbnail">
+              <img src="../assets/images/img.png" alt="Boutique Studio">
+              <p><strong>Boutique Studio</strong></p>
+              <p class="description">Cozy studio in historic district</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+          </div>
+      </div>
+      <div class="col-sm-4">
+          <div class="thumbnail">
+              <img src="../assets/images/im1.png" alt="Family House">
+              <p><strong>Family House</strong></p>
+              <p class="description">4-bedroom house with garden and BBQ area</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+          </div>
+      </div>
+      <div class="col-sm-4">
+          <div class="thumbnail">
+              <img src="../assets//images/im2.png" alt="Penthouse">
+              <p><strong>Luxury Penthouse</strong></p>
+              <p class="description">Premium penthouse with panoramic views</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+          </div>
+      </div>
+      <div class="col-sm-4">
+          <div class="thumbnail">
+              <img src="../assets/images/im3.png" alt="Resort Villa">
+              <p><strong>Resort Villa</strong></p>
+              <p class="description">Private villa in exclusive resort</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Book Now</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">×</button>
+              <h4><span class="glyphicon glyphicon-lock"></span> BOOKING</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form">
+                  <div class="form-group">
+                      <label for="propertyType"><span class="glyphicon glyphicon-home"></span> Property Type</label>
+                      <select class="form-control" id="propertyType">
+                          <optgroup label="Apartments">
+                              <option>Luxury Apartment</option>
+                              <option>Boutique Studio</option>
+                              <option>Penthouse Suite</option>
+                          </optgroup>
+                          <optgroup label="Houses">
+                              <option>Family House</option>
+                              <option>Beach Villa</option>
+                              <option>Resort Villa</option>
+                          </optgroup>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="checkin"><span class="glyphicon glyphicon-calendar"></span> Check-in Date</label>
+                      <input type="date" class="form-control" id="checkin">
+                  </div>
+                  <div class="form-group">
+                      <label for="checkout"><span class="glyphicon glyphicon-calendar"></span> Check-out Date</label>
+                      <input type="date" class="form-control" id="checkout">
+                  </div>
+                  <div class="form-group">
+                      <label for="guests"><span class="glyphicon glyphicon-user"></span> Number of Guests</label>
+                      <select class="form-control" id="guests">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5+</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+                      <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                  </div>
+                  <button type="submit" class="btn btn-block">Book Now <span class="glyphicon glyphicon-ok"></span></button>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-remove"></span> Cancel
+              </button>
+              <p>Need <a href="#">help?</a></p>
+          </div>
+      </div>
+  </div>
+</div>
+    <footer class="text-center">
+        <a class="up-arrow" href="#" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+        <p><span class="glyphicon glyphicon-copyright-mark"></span> 2024</p>
+        <p><a href="#">www.myairbnb.com</a></p>
+        <div class="social-icons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>

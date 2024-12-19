@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - My Airbnb</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #484848;
+            line-height: 1.6;
+            background-color: #fafafa;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 24px;
+            color: #FF385C !important;
+            padding: 15px;
+        }
+
+        .contact-header {
+            background: linear-gradient(135deg, #FF385C 0%, #E31C5F 100%);
+            padding: 120px 0 100px;
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .contact-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .contact-header p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideDown 1s ease-out;
+        }
+
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .contact-info i {
+            font-size: 20px;
+            color: #FF385C;
+            margin-right: 15px;
+            width: 30px;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            animation: slideUp 1.2s ease-out;
+        }
+
+        .location-card h3 {
+            color: #FF385C;
+            margin-bottom: 20px;
+        }
+
+        .location-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .location-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .location-list i {
+            color: #FF385C;
+            margin-right: 10px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #FF385C;
+            box-shadow: none;
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background-color: #FF385C;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: #E31C5F;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #2d2d30;
+            padding: 60px 0;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            font-size: 24px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #FF385C;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-header {
+                padding: 80px 0 60px;
+            }
+
+            .contact-header h1 {
+                font-size: 36px;
+            }
+
+            .contact-card, .location-card {
+                padding: 30px;
+                margin: 0 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../home/home.html">My Airbnb</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contact-header">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="contact-card">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Subject">
+                        <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="contact-card">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p><i class="fa fa-map-marker"></i> Accra, Ghana</p>
+                        <p><i class="fa fa-phone"></i> +233 223355454</p>
+                        <p><i class="fa fa-envelope"></i> myairbnb@gmail.com</p>
+                        <p><i class="fa fa-clock-o"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <h3>Our Locations</h3>
+                    <ul class="location-list">
+                        <li><i class="fa fa-location-arrow"></i> Abijan, Côte d'Ivoire</li>
+                        <li><i class="fa fa-location-arrow"></i> Lome, Togo</li>
+                        <li><i class="fa fa-location-arrow"></i> Ouidah, Benin</li>
+                        <li><i class="fa fa-location-arrow"></i> Accra, Ghana</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <p>© 2024 My Airbnb. All rights reserved.</p>
+        <p><a href="#">www.myairbnb.com</a></p>
+        <div class="social-icons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission animation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-submit');
+            btn.innerHTML = 'Sending...';
+            btn.style.backgroundColor = '#E31C5F';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                btn.innerHTML = 'Message Sent!';
+                btn.style.backgroundColor = '#28a745';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    btn.innerHTML = 'Send Message';
+                    btn.style.backgroundColor = '#FF385C';
+                }, 2000);
+            }, 1500);
+        });
+
+        // Smooth scroll for anchor links
+        $('a[href^="#"]').on('click', function(event) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 800);
+        });
+    </script>
+</body>
+</html>
