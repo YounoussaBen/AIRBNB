@@ -11,6 +11,17 @@ if (!$conn) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if required fields are set
+    if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['email']) || 
+        empty($_POST['phone']) || empty($_POST['nationality']) || empty($_POST['profession']) || 
+        empty($_POST['age']) || empty($_POST['username']) || empty($_POST['password'])) {
+        echo "<script>
+            alert('Please fill in all required fields.');
+            window.location.href = '../register/register.html';
+        </script>";
+        exit();
+    }
+
     // Sanitize and validate input data
     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
     $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
@@ -23,44 +34,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // Check if email already exists
-    $checkEmail = "SELECT * FROM users WHERE email = '$email'";
-    $result = mysqli_query($conn, $checkEmail);
+    $checkEmail = "SELECT 1 FROM users WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $checkEmail);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
 
-    if (mysqli_num_rows($result) > 0) {
-        $error_message = "Email already exists!";
-        include 'register.php';
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        mysqli_stmt_close($stmt);
+        echo "<script>
+            alert('Email already exists!');
+            window.location.href = '../register/register.html';
+        </script>";
         exit();
     }
+    mysqli_stmt_close($stmt);
 
     // Check if username already exists
-    $checkUsername = "SELECT * FROM users WHERE username = '$username'";
-    $result = mysqli_query($conn, $checkUsername);
+    $checkUsername = "SELECT 1 FROM users WHERE username = ?";
+    $stmt = mysqli_prepare($conn, $checkUsername);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
 
-    if (mysqli_num_rows($result) > 0) {
-        $error_message = "Username already taken!";
-        include 'register.php';
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        mysqli_stmt_close($stmt);
+        echo "<script>
+            alert('Username already taken!');
+            window.location.href = '../register/register.html';
+        </script>";
         exit();
     }
+    mysqli_stmt_close($stmt);
 
     // Insert user data into database
     $sql = "INSERT INTO users (first_name, last_name, email, phone, nationality, profession, age, username, password) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssssssss", 
+    mysqli_stmt_bind_param($stmt, "ssssssiss", 
         $firstName, $lastName, $email, $phone, $nationality, 
         $profession, $age, $username, $password);
 
     if (mysqli_stmt_execute($stmt)) {
-        // Registration successful - redirect to home page with success message
-        header("Location: ../home/home.html?registration=success&name=" . urlencode($firstName));
-        exit();
+        echo "<script>
+            alert('Registration successful!');
+            window.location.href = '../home/home.html';
+        </script>";
     } else {
-        $error_message = "Error: " . mysqli_error($conn);
-        include 'register.php';
-        exit();
+        echo "<script>
+            alert('Error: Could not complete registration. Please try again later.');
+            window.location.href = '../register/register.html';
+        </script>";
     }
-
     mysqli_stmt_close($stmt);
 }
 
